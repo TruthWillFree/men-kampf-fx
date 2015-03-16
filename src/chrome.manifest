@@ -1,0 +1,3 @@
+content	men-kampf	chrome/content/	contentaccessible=yes
+
+overlay	chrome://browser/content/browser.xul	chrome://men-kampf/content/main.xul

@@ -1,0 +1,3 @@
+#!/bin/bash
+cd src
+zip MenKampf.xpi chrome/content/men-kampf.js chrome/content/main.xul chrome.manifest install.rdf ; mv MenKampf.xpi ..
