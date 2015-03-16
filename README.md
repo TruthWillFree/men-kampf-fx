@@ -1,7 +1,10 @@
 # Men-Kampf - Word Replacer
 A jokey add-on for firefox that replaces words for amusing results.
 
-Original description
+The xpi-file can be downloaded here:
+https://github.com/Alcesmire/men-kampf-firefox/raw/master/MenKampf.xpi
+
+Original description:
 > Replaces radfem rethoric with nazi-friendly alternatives. Just for fun.
 > The add-on is inspired by the chrome extension "man kampf", but the word pairs used are different.
 
