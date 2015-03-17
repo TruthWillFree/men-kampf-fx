@@ -3,18 +3,18 @@
   <RDF:Description about="urn:mozilla:install-manifest">
 
     <!-- GUID and type -->
-    <em:id>men-kampf@alcesmire.addons.mozilla.org</em:id>
+    <em:id>myCramps@Menkampf.com</em:id>
     <em:type>2</em:type>
 
     <!-- Extension details -->
-    <em:name>Men Kampf - Word Exchanger</em:name>
+    <em:name>My Cramps - Word Exchanger</em:name>
     <em:description>Replaces radfem rethoric with nazi friendly alternatives. Just for fun.</em:description>
-    <em:creator>The Internet</em:creator>
-    <em:developer>Erim Secla</em:developer>
-    <em:homepageURL>http://twitter.com/Alcesmire</em:homepageURL>
+    <em:creator>The mighty Shitlords</em:creator>
+    <em:developer>Truth Will Free</em:developer>
+    <em:homepageURL>http://menkampf.com</em:homepageURL>
 
     <!-- Current version -->
-    <em:version>0.35</em:version>
+    <em:version>0.5pre50</em:version>
 
     <!-- Firefox meta info -->
     <em:targetApplication>
