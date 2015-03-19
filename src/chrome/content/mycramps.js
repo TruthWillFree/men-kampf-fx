@@ -43,6 +43,13 @@ var myCramps = {
       v = v.replace(/\bwomen\b/g, "Germans");
       v = v.replace(/\bWomen\b/g, "Germans");
       v = v.replace(/\bwomen\b/g, "Germans");
+      v = v.replace(/\bFemale\b/g, "German");
+      v = v.replace(/\bfemale\b/g, "german");
+      v = v.replace(/\bFemales\b/g, "Germans");
+      v = v.replace(/\bfemales\b/g, "germans");
+      v = v.replace(/\bgirl\b/g, "Jungmädel");
+      v = v.replace(/\bgirls\b/g, "Jungmädels");
+       
       v = v.replace(/\byes\b/g, "jawohl");
       v = v.replace(/\bYes\b/g, "Jawohl");
       
@@ -71,14 +78,19 @@ var myCramps = {
       v = v.replace(/\bmanhater\b/g, "judenhater");
       v = v.replace(/\bMan\b/g, "Jew");
       v = v.replace(/\bman\b/g, "jew");
+      v = v.replace(/\bmanhood\b/g, "Judentum");
       v = v.replace(/\bMen\b/g, "Jews");
       v = v.replace(/\bmen\b/g, "jews");
       v = v.replace(/\bStraight\b/g, "Heterosexual");
       v = v.replace(/\bstraight\b/g, "heterosexual");
-      v = v.replace(/\bMale\b/g, "Jew");
-      v = v.replace(/\bmale\b/g, "jew");
+      v = v.replace(/\bMale\b/g, "Jewish");
+      v = v.replace(/\bmale\b/g, "jewish");
+      v = v.replace(/\bmales\b/g, "jewish");
       v = v.replace(/\bblack\b/g, "noble");
       v = v.replace(/\bcolored\b/g, "golden");
+      v = v.replace(/\bguy\b/g, "kike");
+      v = v.replace(/\bguys\b/g, "kikes");
+      v = v.replace(/\bGuys\b/g, "Kikes");
       
       v = v.replace(/\bWhite\b/g, "Honkey");  // Degenerate
       v = v.replace(/\bwhite\b/g, "bleached");  // degenerate
@@ -108,7 +120,9 @@ var myCramps = {
       v = v.replace(/\bPatriarchal\b/g, "Zionist");
       v = v.replace(/\bpatriarchal\b/g, "zionist");
       v = v.replace(/\bMisogyny\b/g, "Zionistic Dominance"); // was communism
-      v = v.replace(/\bmisogyny\b/g, "kikeness");
+      v = v.replace(/\bmisogyny\b/g, "krautphobia");
+      v = v.replace(/\bmisogynist\b/g, "krauthater");
+      v = v.replace(/\bmisogynists\b/g, "krauthaters");
       v = v.replace(/\Misandry\b/g, "Anti-semitism");
       v = v.replace(/\misandry\b/g, "anti-semitism");
       v = v.replace(/\misandrist\b/g, "anti-semitic");
@@ -138,37 +152,80 @@ var myCramps = {
   } ,
   
   onToolbarButton: function onButton (evt) {
-    let isActive = !evt.target.checked;
+    let isActive = (myCramps.Preferences.getBoolPref('active'));
+    isActive = !isActive;
     myCramps.Preferences.setBoolPref('active', isActive);
-    evt.target.checked = isActive;
+    if (isActive)
+      evt.target.setAttribute("checked" , isActive);
+    else
+      evt.target.removeAttribute("checked");
     // alert('Extension Active = ' + isActive);
     let tabbrowser = getBrowser();
-    tabbrowser.reload(tabbrowser.selectedTab);
+    if (isActive) {
+      tabbrowser.reload(tabbrowser.selectedTab);
+      myCramps.walk(document.body).bind(myCramps);
+    }
+    else {
+      tabbrowser.reload(tabbrowser.selectedTab);
+    }
     /*
     if (isActive) {
       myCramps.walk(document.body).bind(myCramps);
     }
     */
+  },
+  
+  checkFirstRun: function checkFirstRun() {
+    // check if not first run
+    if (!myCramps.Preferences.getBoolPref('firstRun'))
+      return;
+    
+    // automatically add the toolbar button:
+    let toolbar = document.getElementById('nav-bar');
+    if (!toolbar.currentSet.match('myCramps-toolbarbutton')) {
+        let newset = toolbar.currentSet.concat(',myCramps-toolbarbutton');
+        toolbar.currentSet = newset;
+        toolbar.setAttribute('currentset', newset);
+        document.persist(toolbar.id, "currentset");
+    }
+    myCramps.Preferences.setBoolPref('firstRun', false);
+    let text = 
+      'You have been handed your glasses.' +    
+      '\nJust reach for the red button with the four Fs to see the truth.' +
+      '\n Always remember: THEY LIVE! ';
+    myCramps.Util.alert(text, 'myCramps (men Kampf): A Satirical Add-on');
   }
 };    
     
 (function() {
     function windowLoadHandler()
     {
-        // Dear Mozilla: I hate you for making me do this.
-        window.removeEventListener('load', windowLoadHandler);
+      // Dear Mozilla: I hate you for making me do this.
+      window.removeEventListener('load', windowLoadHandler);
+      setTimeout( function() { 
+        myCramps.checkFirstRun();
+        }, 10000 );
         
-        var appContent = document.getElementById('appcontent');
-
-        appContent.addEventListener('DOMContentLoaded', function(e) {
-            myCramps.walk(e.originalTarget.body).bind(myCramps);
-        });
-        // setInterval - why do this again and again?
-        // this is potentially performance killing
-        // lets try setTimeout instead
-        appContent.setTimeout(
-          function(){ myCramps.walk(document.body).bind(myCramps); }, 15000
-        );
+      // show button in correct state
+      let btn = document.getElementById('myCramps-toolbarbutton');
+      if (btn) try {
+        let active = myCramps.Preferences.getBoolPref('active');
+        if (active)
+          btn.setAttribute("checked", active);        
+        else
+          btn.removeAttribute("checked");  
+      } catch(ex) {;}
+      
+      var appContent = document.getElementById('appcontent');
+      appContent.addEventListener('DOMContentLoaded', function(e) {
+          myCramps.walk(e.originalTarget.body).bind(myCramps);
+      });
+      // setInterval - why do this again and again?
+      // this is potentially performance killing
+      // lets try setTimeout instead
+      appContent.setTimeout(
+        function(){ myCramps.walk(document.body).bind(myCramps); }, 15000
+      );
     }
 
     window.addEventListener('load', windowLoadHandler);

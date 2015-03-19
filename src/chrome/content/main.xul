@@ -1,11 +1,6 @@
 <?xml version="1.0"?>
-
+<?xml-stylesheet href="chrome://global/skin/" type="text/css"?>
 <?xml-stylesheet href="chrome://mycramps/skin/overlay.css" title="mcMyCramps" type="text/css"?>
-
-<!--
-for now, no localisation necessary
-<!DOCTYPE overlay SYSTEM "chrome://mycramps/locale/cv-pls.dtd">
--->
 
 <overlay id="cv-pls-browser-overlay" xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
   <script type="text/javascript;version=1.7" src="chrome://mycramps/content/mycramps.js" />
