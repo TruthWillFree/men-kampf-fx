@@ -7,14 +7,16 @@
     <em:type>2</em:type>
 
     <!-- Extension details -->
-    <em:name>My Cramps - Word Exchanger</em:name>
-    <em:description>Replaces radfem rethoric with nazi friendly alternatives. Just for fun.</em:description>
-    <em:creator>The mighty Shitlords</em:creator>
+    <em:name>MenKampf (My Cramps) - Truth Infuser</em:name>
+    <em:description>Replaces Radfem rethoric with Nazi friendly alternatives. Achtung SATIRE!</em:description>
+    <em:creator>The Mighty Shitlords</em:creator>
     <em:developer>Truth Will Free</em:developer>
     <em:homepageURL>http://menkampf.com</em:homepageURL>
+    <em:iconURL>chrome://mycramps/skin/Mycramps32.png</em:iconURL>
+    <em:icon64URL>chrome://mycramps/skin/Mycramps64.png</em:icon64URL>
 
     <!-- Current version -->
-    <em:version>0.5pre55</em:version>
+    <em:version>0.5pre76</em:version>
 
     <!-- Firefox meta info -->
     <em:targetApplication>

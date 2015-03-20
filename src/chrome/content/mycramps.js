@@ -49,6 +49,11 @@ var myCramps = {
       v = v.replace(/\bfemales\b/g, "germans");
       v = v.replace(/\bgirl\b/g, "Jungmädel");
       v = v.replace(/\bgirls\b/g, "Jungmädels");
+      v = v.replace(/\bboy\b/g, "Judenkid");
+      v = v.replace(/\bboys\b/g, "Judenkids");
+      v = v.replace(/\bBoys\b/g, "Young Jews");
+      
+      v = v.replace(/\bcircumcision\b/g, "cosmetic truncation");
        
       v = v.replace(/\byes\b/g, "jawohl");
       v = v.replace(/\bYes\b/g, "Jawohl");
